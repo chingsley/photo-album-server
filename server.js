@@ -10,7 +10,7 @@ function getNewId() {
 }
 
 const getImageId = () => {
-  return Math.floor(Math.random() * 1001);
+  return Math.floor(Math.random() * 101);
 };
 
 let pictures = [
@@ -18,6 +18,7 @@ let pictures = [
     id: 1,
     title: 'Ben',
     subtitle: 'ben@lambdaschool.com',
+    date: new Date(), 
     image: `https://picsum.photos/id/${getImageId()}/1000/1000`,
     description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum animi natus facilis placeat veritatis, ...'
   },
@@ -25,6 +26,7 @@ let pictures = [
     id: 2,
     title: 'Austen',
     subtitle: 'austen@lambdaschool.com',
+    date: new Date(), 
     image: `https://picsum.photos/id/${getImageId()}/1000/1000`,
     description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum animi natus facilis placeat veritatis, ...'
   },
@@ -32,6 +34,7 @@ let pictures = [
     id: 3,
     title: 'Ryan',
     subtitle: 'ryan@lambdaschool.com',
+    date: new Date(), 
     image: `https://picsum.photos/id/${getImageId()}/1000/1000`,
     description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum animi natus facilis placeat veritatis, ...'
   },
@@ -39,6 +42,7 @@ let pictures = [
     id: 4,
     title: 'Sean',
     subtitle: 'sean@lambdaschool.com',
+    date: new Date(), 
     image: `https://picsum.photos/id/${getImageId()}/1000/1000`,
     description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum animi natus facilis placeat veritatis, ...'
   },
@@ -46,6 +50,7 @@ let pictures = [
     id: 5,
     title: 'Michelle',
     subtitle: 'michelle@gmail.com',
+    date: new Date(), 
     image: `https://picsum.photos/id/${getImageId()}/1000/1000`,
     description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum animi natus facilis placeat veritatis, ...'
   },
@@ -53,10 +58,15 @@ let pictures = [
     id: 6,
     title: 'Luis',
     subtitle: 'luis@lambdaschool.com',
+    date: new Date(), 
     image: `https://picsum.photos/id/${getImageId()}/1000/1000`,
     description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum animi natus facilis placeat veritatis, ...'
   },
 ];
+
+const print = item => {
+  console.log('>>>>>>>>>>>>>>>>>>> \n', item, '\n >>>>>>>>>>>>>>>>>>>')
+};
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -67,6 +77,7 @@ app.get('/pictures', (req, res) => {
 
 app.post('/pictures', (req, res) => {
   const picture = { id: getNewId(), ...req.body };
+  print(req.body);
   pictures = [...pictures, picture];
   res.status(201).json(pictures);
 });
